@@ -37,17 +37,25 @@ public class MainActivity extends AppCompatActivity {
     {
         quantity++ ;
         display(quantity);
+        displayPrice(quantity*5);
     }
 
     public void decrement(View view)
     {
         quantity-- ;
         display(quantity) ;
+        displayPrice(quantity*5);
     }
 
     private void displayMessage(String message)
     {
         TextView priceview = (TextView) findViewById(R.id.price_text_view) ;
         priceview.setText(message);
+    }
+
+    private void displayPrice(int number)
+    {
+        TextView priceview = (TextView) findViewById(R.id.price_text_view) ;
+        priceview.setText("$"+number);
     }
 }
