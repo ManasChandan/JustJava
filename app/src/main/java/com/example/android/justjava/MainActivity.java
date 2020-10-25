@@ -6,7 +6,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import java.text.NumberFormat;
+
 public class MainActivity extends AppCompatActivity {
+
+    int quantity = 2 ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void submitOrder(View view)
     {
-        display(32) ;
+        displayPrice(quantity * 5);
     }
 
     private void display(int number)
@@ -25,5 +29,23 @@ public class MainActivity extends AppCompatActivity {
                 R.id.quantity_text_view
         );
         quantityview.setText("" + number);
+    }
+
+    private void displayPrice(int number)
+    {
+        TextView priceTextView = (TextView) findViewById(R.id.price_text_view) ;
+        priceTextView.setText(NumberFormat.getCurrencyInstance().format(number));
+    }
+
+    public void increment(View view)
+    {
+        quantity++ ;
+        display(quantity);
+    }
+
+    public void decrement(View view)
+    {
+        quantity-- ;
+        display(quantity) ;
     }
 }
